@@ -4,10 +4,10 @@ import {
     RequestConfig,
     DefaultResponseData,
     ErrorResponseData,
-} from "../interfaces/utils.js";
+} from "../interfaces/utils/utils.js";
 import {
-    AccountSendCodeRequesteData,
-    AccountVerifyRequesteData,
+    AccountSendCoderequestBody,
+    AccountVerifyrequestBody,
 } from "../interfaces/account.js";
 
 export class ControllerAccount {
@@ -18,13 +18,13 @@ export class ControllerAccount {
     }
 
     async sendCode(
-        data: AccountSendCodeRequesteData
+        data: AccountSendCoderequestBody
     ): Promise<AxiosResponse<string>> {
         return this.conn.axios.post("/account/sendCode", data);
     }
 
     async verify(
-        data: AccountVerifyRequesteData
+        data: AccountVerifyrequestBody
     ): Promise<AxiosResponse<string>> {
         return this.conn.axios.post("/account/verify", data);
     }

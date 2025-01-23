@@ -4,9 +4,9 @@ import {
     RequestConfig,
     DefaultResponseData,
     ErrorResponseData,
-} from "../interfaces/utils.js";
+} from "../interfaces/utils/utils.js";
 import {
-    ProfileEditRequestData,
+    ProfileEditrequestBody,
     ProfileListResponseData,
 } from "../interfaces/profile.js";
 
@@ -18,14 +18,14 @@ export class ControllerProfile {
     }
 
     async list(
-        config: RequestConfig
+        config?: RequestConfig
     ): Promise<AxiosResponse<ProfileListResponseData>> {
         return await this.conn.axios.get(`/profile`, config);
     }
 
     async edit(
-        data: ProfileEditRequestData,
-        config: RequestConfig
+        data: ProfileEditrequestBody,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return await this.conn.axios.post("/profile", data, config);
     }

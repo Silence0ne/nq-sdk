@@ -7,12 +7,13 @@ import {
     UUID,
 } from "../interfaces/utils/utils.js";
 import {
-    PhraseListResponseData,
-    PhraseAddrequestBody,
-    PhraseViewResponseData,
-} from "../interfaces/phrase.js";
+    PermissionListResponseData,
+    PermissionAddrequestBody,
+    PermissionViewResponseData,
+    PermissionEditrequestBody,
+} from "../interfaces/permission.js";
 
-export class ControllerPhrase {
+export class ControllerPermission {
     readonly conn: Connection;
 
     constructor(connection: Connection) {
@@ -21,36 +22,40 @@ export class ControllerPhrase {
 
     async list(
         config?: RequestConfig
-    ): Promise<AxiosResponse<PhraseListResponseData>> {
-        return await this.conn.axios.get(`/phrase`, config);
+    ): Promise<AxiosResponse<PermissionListResponseData>> {
+        return await this.conn.axios.get(`/permission`, config);
     }
 
     async view(
         target: UUID,
         config?: RequestConfig
-    ): Promise<AxiosResponse<PhraseViewResponseData>> {
-        return await this.conn.axios.get(`/phrase/${target}`, config);
+    ): Promise<AxiosResponse<PermissionViewResponseData>> {
+        return await this.conn.axios.get(`/permission/${target}`, config);
     }
 
     async add(
-        data: PhraseAddrequestBody,
+        data: PermissionAddrequestBody,
         config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
-        return await this.conn.axios.post(`/phrase`, data, config);
+        return await this.conn.axios.post(`/permission`, data, config);
     }
 
     async edit(
         target: UUID,
-        data: PhraseAddrequestBody,
+        data: PermissionEditrequestBody,
         config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
-        return await this.conn.axios.post(`/phrase/${target}`, data, config);
+        return await this.conn.axios.post(
+            `/permission/${target}`,
+            data,
+            config
+        );
     }
 
     async delete(
         target: UUID,
         config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
-        return await this.conn.axios.delete(`/phrase/${target}`, config);
+        return await this.conn.axios.delete(`/permission/${target}`, config);
     }
 }

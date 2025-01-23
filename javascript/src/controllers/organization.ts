@@ -4,14 +4,15 @@ import {
     RequestConfig,
     DefaultResponseData,
     ErrorResponseData,
-} from "../interfaces/utils.js";
+    UUID,
+} from "../interfaces/utils/utils.js";
 import {
     OrganizationListResponseData,
     OrganizationNameViewResponseData,
-    OrganizationAddRequestData,
+    OrganizationAddrequestBody,
     OrganizationViewResponseData,
-    OrganizationNameAddRequestData,
-    OrganizationNameEditRequestData,
+    OrganizationNameAddrequestBody,
+    OrganizationNameEditrequestBody,
 } from "../interfaces/organization.js";
 
 export class ControllerOrganization {
@@ -22,36 +23,36 @@ export class ControllerOrganization {
     }
 
     list(
-        config: RequestConfig
+        config?: RequestConfig
     ): Promise<AxiosResponse<OrganizationListResponseData>> {
         return this.conn.axios.get(`/organization`, config);
     }
 
     view(
-        target: string,
-        config: RequestConfig
+        target: UUID,
+        config?: RequestConfig
     ): Promise<AxiosResponse<OrganizationViewResponseData>> {
         return this.conn.axios.get(`/organization/${target}`, config);
     }
 
     add(
-        data: OrganizationAddRequestData,
-        config: RequestConfig
+        data: OrganizationAddrequestBody,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.post(`/organization`, data, config);
     }
 
     edit(
-        target: string,
-        data: OrganizationAddRequestData,
-        config: RequestConfig
+        target: UUID,
+        data: OrganizationAddrequestBody,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.post(`/organization/${target}`, data, config);
     }
 
     delete(
-        target: string,
-        config: RequestConfig
+        target: UUID,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.delete(`/organization/${target}`, config);
     }
@@ -72,23 +73,23 @@ class ActionName {
     }
 
     view(
-        target: string,
-        config: RequestConfig
+        target: UUID,
+        config?: RequestConfig
     ): Promise<AxiosResponse<OrganizationNameViewResponseData>> {
         return this.conn.axios.get(`/organization/name/${target}`, config);
     }
 
     add(
-        data: OrganizationNameAddRequestData,
-        config: RequestConfig
+        data: OrganizationNameAddrequestBody,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.post(`/organization/name`, data, config);
     }
 
     edit(
-        target: string,
-        data: OrganizationNameEditRequestData,
-        config: RequestConfig
+        target: UUID,
+        data: OrganizationNameEditrequestBody,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.post(
             `/organization/name${target}`,
@@ -98,8 +99,8 @@ class ActionName {
     }
 
     delete(
-        target: string,
-        config: RequestConfig
+        target: UUID,
+        config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
         return this.conn.axios.delete(`/organization/name/${target}`, config);
     }

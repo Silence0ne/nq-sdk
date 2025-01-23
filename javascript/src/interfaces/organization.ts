@@ -1,6 +1,8 @@
+import { UUID } from "./utils/utils.js";
+
 //Organization List
 export interface OrganizationListItem {
-    uuid: string;
+    uuid: UUID;
     username: string;
     primary_name: string;
     profile_image: string | null;
@@ -19,7 +21,7 @@ export interface OrganizationViewResponseData {
 }
 
 //Organization Add | Edit
-export interface OrganizationAddRequestData {
+export interface OrganizationAddrequestBody {
     usename: string;
     name: string;
     profile_image: string | null;
@@ -30,7 +32,7 @@ export interface OrganizationAddRequestData {
 //Organization/Name
 //Organization/Name List
 export interface OrganizationNameListItem {
-    uuid: string;
+    uuid: UUID;
     language: string;
     name: string;
 }
@@ -38,18 +40,18 @@ export type OrganizationNameListResponseData = OrganizationNameListItem[];
 
 //Organization/Name View
 export interface OrganizationNameViewResponseData {
-    uuid: string;
+    uuid: UUID;
     language: string;
     name: string;
 }
 
 //Organization/Name Add
-export interface OrganizationNameAddRequestData {
+export interface OrganizationNameAddrequestBody {
     name: string;
     language: string;
 }
 
 //Organization/Name Edit
-export interface OrganizationNameEditRequestData {
+export interface OrganizationNameEditrequestBody {
     name: string;
 }

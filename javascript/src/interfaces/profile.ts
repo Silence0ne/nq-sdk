@@ -1,6 +1,8 @@
+import { UUID } from "./utils/utils.js";
+
 //profie List
 interface ProfileListItem {
-    uuid: string;
+    uuid: UUID;
     email: string | null;
     username: string;
     first_name: string | null;
@@ -12,7 +14,7 @@ interface ProfileListItem {
 export type ProfileListResponseData = ProfileListItem[];
 
 //profile Edit
-export interface ProfileEditRequestData {
+export interface ProfileEditrequestBody {
     username: string;
     first_name: string | null;
     last_name: string | null;

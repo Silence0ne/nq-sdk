@@ -7,41 +7,36 @@ import {
     UUID,
 } from "../interfaces/utils/utils.js";
 import {
-    UserAddrequestBody,
-    UserListResponseData,
-} from "../interfaces/user.js";
+    WordAddrequestBody,
+    WordViewResponseData,
+} from "../interfaces/word.js";
 
-export class ControllerUser {
+export class ControllerWord {
     readonly conn: Connection;
 
     constructor(connection: Connection) {
         this.conn = connection;
     }
 
-    async list(
-        config: RequestConfig
-    ): Promise<AxiosResponse<UserListResponseData>> {
-        return await this.conn.axios.get(`/user`, config);
-    }
-
     async view(
         target: UUID,
         config?: RequestConfig
-    ): Promise<AxiosResponse<UserListResponseData>> {
-        return await this.conn.axios.get(`/user/${target}`, config);
+    ): Promise<AxiosResponse<WordViewResponseData>> {
+        return await this.conn.axios.get(`/word/${target}`, config);
     }
+
     async edit(
         target: UUID,
-        data: UserAddrequestBody,
+        data: WordAddrequestBody,
         config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
-        return await this.conn.axios.post(`/user/${target}`, data, config);
+        return await this.conn.axios.post(`/word/${target}`, data, config);
     }
 
     async delete(
         target: UUID,
         config?: RequestConfig
     ): Promise<AxiosResponse<DefaultResponseData>> {
-        return await this.conn.axios.delete(`/user/${target}`, config);
+        return await this.conn.axios.delete(`/word/${target}`, config);
     }
 }

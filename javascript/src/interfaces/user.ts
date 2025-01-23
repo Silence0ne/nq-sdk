@@ -1,6 +1,8 @@
+import { UUID } from "./utils/utils.js";
+
 //user view
-export interface UserListItem {
-    uuid: string;
+interface UserListItem {
+    uuid: UUID;
     email: string | null;
     username: string;
     first_name: string | null;
@@ -12,10 +14,12 @@ export interface UserListItem {
 export type UserListResponseData = UserListItem[];
 
 //user Add | Edit
-export interface UserAddRequestData {
+export interface UserAddrequestBody {
     username: string;
-    first_name: string | null;
-    last_name: string | null;
-    birthday: string | null;
-    profile_image: string | null;
+    primary_email?: string | null;
+    first_name: string;
+    last_name: string;
+    birthday: string;
+    profile_image?: string;
+    language: string;
 }
